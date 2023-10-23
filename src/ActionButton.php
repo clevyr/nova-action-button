@@ -39,28 +39,20 @@ class ActionButton extends Field
      * The text to be displayed inside the button.
      *
      * @param string $text
+     * @return ActionButton
      */
-    public function text(string $text)
+    public function text(string $text): ActionButton
     {
         return $this->withMeta(compact('text'));
     }
 
     /**
-     * Hide button.
-     *
-     * @param callable
-     */
-    public function hide($callback)
-    {
-        return $this->withMeta(['hidden' => call_user_func($callback)]);
-    }
-
-    /**
      * Enable loading animation.
      *
-     * @param $callback
+     * @param bool $callback
+     * @return ActionButton
      */
-    public function showLoadingAnimation($callback = true)
+    public function showLoadingAnimation(bool $callback = true): ActionButton
     {
         return $this->withMeta(
             [
@@ -73,8 +65,9 @@ class ActionButton extends Field
      * Change loading animation color
      *
      * @param string $loadingColor
+     * @return ActionButton
      */
-    public function loadingColor(string $loadingColor)
+    public function loadingColor(string $loadingColor): ActionButton
     {
         return $this->withMeta(compact('loadingColor'));
     }
@@ -83,8 +76,9 @@ class ActionButton extends Field
      * Pass a vue component containing a svg
      *
      * @param string $svg
+     * @return ActionButton
      */
-    public function svg(string $svg)
+    public function svg(string $svg): ActionButton
     {
         return $this->withMeta(['svg' => $svg]);
     }
@@ -92,7 +86,7 @@ class ActionButton extends Field
     /**
      * Change button color.
      */
-    public function buttonColor(string $buttonColor)
+    public function buttonColor(string $buttonColor): ActionButton
     {
         return $this->withMeta(compact('buttonColor'));
     }
