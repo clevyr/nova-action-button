@@ -1,6 +1,6 @@
 <?php
 
-namespace Pdmfc\NovaFields;
+namespace Clevyr\NovaFields;
 
 use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\Field;
@@ -56,7 +56,7 @@ class ActionButton extends Field
     }
 
     /**
-     * Enable loading animation. 
+     * Enable loading animation.
      *
      * @param $callback
      */

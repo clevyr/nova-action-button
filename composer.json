@@ -1,5 +1,5 @@
 {
-    "name": "pdmfc/nova-action-button",
+    "name": "clevyr/nova-action-button",
     "description": "A Laravel Nova field to run actions.",
     "keywords": [
         "laravel",
@@ -12,26 +12,27 @@
             "name": "João Santos",
             "email": "joao.santos@pdmfc.com",
             "role": "Developer"
-        }
+        },
+      {
+          "name": "Anthony Protano",
+          "email": "anthony@clevyr.com",
+          "role": "Developer"
+      }
     ],
     "require": {
-        "php": ">=7.1.0"
+        "php": ">=8.1"
     },
     "autoload": {
         "psr-4": {
-            "Pdmfc\\NovaFields\\": "src/"
+            "Clevyr\\NovaFields\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Pdmfc\\NovaFields\\ActionButtonFieldServiceProvider"
+                "Clevyr\\NovaFields\\ActionButtonFieldServiceProvider"
             ]
         }
     },
-    "config": {
-        "sort-packages": true
-    },
-    "minimum-stability": "dev",
     "prefer-stable": true
 }
