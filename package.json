@@ -8,13 +8,19 @@
     "hot": "mix watch --hot",
     "prod": "npm run production",
     "production": "mix --production",
-    "nova:install": "npm --prefix='../../vendor/laravel/nova' ci"
+    "nova:install": "npm --prefix='../../../vendor/laravel/nova' ci",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.23.2",
+    "@happy-dom/jest-environment": "^12.9.1",
     "@vue/compiler-sfc": "^3.2.22",
+    "@vue/test-utils": "^2.4.1",
+    "@vue/vue3-jest": "^28.1.0",
+    "babel-core": "^7.0.0-bridge.0",
     "laravel-mix": "^6.0.41",
     "postcss": "^8.3.11",
     "vue-loader": "^16.8.3"
-  },
-  "dependencies": {}
+  }
 }
