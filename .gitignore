@@ -1,7 +1,6 @@
 /.idea
 /vendor
 /node_modules
-package-lock.json
 composer.phar
 phpunit.xml
 .phpunit.result.cache
