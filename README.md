@@ -12,7 +12,7 @@ https://github.com/pdmfc/nova-action-button
 ## Installation
 
 ```shell
-composer require pdmfc/nova-action-button
+composer require clevyr/nova-action-button
 ```
 
 ## Usage
@@ -94,7 +94,7 @@ To change button color, use `buttonColor('#21b970')` method.
     //...
 
     "require" {
-        "pdmfc/nova-action-button: "*"
+        "clevyr/nova-action-button: "*"
     },
 
     //...
@@ -107,7 +107,7 @@ To change button color, use `buttonColor('#21b970')` method.
 }
 ```
 
-- run `composer update pdmfc/nova-action-button`
+- run `composer update clevyr/nova-action-button`
 
 You're now ready to start contributing!
 
