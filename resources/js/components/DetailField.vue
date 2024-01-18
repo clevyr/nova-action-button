@@ -40,11 +40,9 @@ export default {
 	mixins: [FormField, HandlesValidationErrors],
 
 	props: {
-		index: Number,
-		resource: Object,
 		resourceName: String,
-		resourceId: String,
 		field: Object,
+		resource: {},
 		queryString: {
 			type: Object,
 			default: () => ({
@@ -65,7 +63,7 @@ export default {
 
 	computed: {
 		selectedResources() {
-			return this.field.resourceId;
+			return [this.field.resourceId];
 		},
 
 		selectedAction() {
