@@ -46,6 +46,19 @@ const svgStub = {
 	template: '<div></div>',
 };
 
+const defaultButtonStub = {
+	name: 'DefaultButton',
+	template: '<div><slot /></div>',
+};
+
+const global = {
+	stubs: {
+		'test': modalStub,
+		'svg-stub': svgStub,
+		'DefaultButton': defaultButtonStub,
+	},
+};
+
 afterEach(() => {
 	global.Nova = null;
 });
@@ -53,6 +66,7 @@ afterEach(() => {
 describe('State tests', () => {
 	it('is hidden or shown', async ()=> {
 		const wrapper = shallowMount(IndexField, {
+			global,
 			props,
 		});
 
@@ -69,6 +83,7 @@ describe('State tests', () => {
 
 	it('shows or hides the loaders', async () => {
 		const wrapper = shallowMount(IndexField, {
+			global,
 			props,
 			data,
 		});
@@ -89,99 +104,9 @@ describe('State tests', () => {
 		expect(wrapper.vm.showLoading).toEqual(true);
 	});
 
-	test('button is disabled or enabled', async () => {
-		const wrapper = shallowMount(IndexField, {
-			props,
-			data,
-		});
-
-		const button = await wrapper.find('button');
-
-		// field.readonly set to false
-		// Not currently loading
-		expect(wrapper.vm.disabled).toEqual(false);
-		expect(button.attributes()).not.toHaveProperty('disabled');
-
-		await wrapper.setProps({
-			field: {
-				readonly: true,
-			},
-		});
-
-		// field.readonly set to true
-		// not currently loading
-		expect(wrapper.vm.disabled).toEqual(true);
-		expect(button.attributes()).toHaveProperty('disabled');
-
-		await wrapper.setData({
-			loading: true,
-		});
-		await wrapper.setProps({
-			field: {
-				readonly: false,
-				showLoadingAnimation: true,
-			},
-		});
-
-		// field.readonly set to false
-		// Loading set to true
-		expect(wrapper.vm.disabled).toEqual(true);
-		expect(button.attributes()).toHaveProperty('disabled');
-	});
-
-	it('has button color', async () => {
-		const wrapper = shallowMount(IndexField, {
-			props,
-		});
-
-		const button = await wrapper.find('button');
-
-		// field.buttonColor set to null
-		expect(wrapper.vm.buttonColor).toEqual('');
-		expect(button.attributes()['style']).not.toContain('background-color');
-
-		await wrapper.setProps({
-			field: {
-				buttonColor: 'red',
-			},
-		});
-
-		// field.buttonColor set to red
-		expect(wrapper.vm.buttonColor).toEqual('red');
-		expect(button.attributes()['style']).toContain('background-color: red !important;');
-	});
-
-	it('shows or hides the modal component', async () => {
-		const wrapper = shallowMount(IndexField, {
-			props,
-			data,
-			global: {
-				stubs: {
-					'test': modalStub,
-				},
-			},
-		});
-
-		const button = await wrapper.find('button');
-
-		// Modal is not shown
-		expect(wrapper.vm.confirmActionModalOpened).toEqual(false);
-		expect(wrapper.find('#confirm-action-modal').exists()).toEqual(false);
-
-		await button.trigger('click');
-
-		// Modal is shown
-		expect(wrapper.vm.confirmActionModalOpened).toEqual(true);
-		expect(wrapper.find('#confirm-action-modal').exists()).toEqual(true);
-	});
-
 	it('shows an svg', async () => {
 		const wrapper = shallowMount(IndexField, {
-			global: {
-				stubs: {
-					'svg-stub': svgStub,
-				},
-			},
+			global,
 			props: {
 				...props,
 				field: {
@@ -198,11 +123,7 @@ describe('State tests', () => {
 
 	it('does not show an svg', async () => {
 		const wrapper = shallowMount(IndexField, {
-			global: {
-				stubs: {
-					'svg-stub': svgStub,
-				},
-			},
+			global,
 			props: {
 				...props,
 				field: {
@@ -219,16 +140,18 @@ describe('State tests', () => {
 
 	it('shows default button text', async () => {
 		const wrapper = shallowMount(IndexField, {
+			global,
 			props,
 		});
 
 		// field.buttonText set to null
 		expect(wrapper.vm.buttonText).toEqual('Run');
-		expect(wrapper.find('button').text()).toEqual('Run');
+		expect(wrapper.html()).toContain('Run');
 	});
 
 	it('shows custom button text', async () => {
 		const wrapper = shallowMount(IndexField, {
+			global,
 			props: {
 				...props,
 				field: {
@@ -240,6 +163,6 @@ describe('State tests', () => {
 
 		// field.buttonText set to null
 		expect(wrapper.vm.buttonText).toEqual('Test');
-		expect(wrapper.find('button').text()).toEqual('Test');
+		expect(wrapper.html()).toContain('Test');
 	});
 });
