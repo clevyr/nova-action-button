@@ -1,7 +1,7 @@
 <template>
-	<panel-item :field="field">
+	<PanelItem :field="field">
 		<template #value>
-			<button
+			<DefaultButton
 				class="btn btn-default btn-primary flex items-center justify-center"
 				:disabled="field.readonly"
 				:style="`background-color: ${field.buttonColor} !important`"
@@ -12,28 +12,25 @@
 					:is="svg"
 					v-if="svg"
 				/>
-			</button>
+			</DefaultButton>
 
 			<!-- Action Confirmation Modal -->
-			<portal
-				to="modals"
-				transition="fade-transition"
-			>
-				<component
-					:is="field.action.component"
-					v-if="confirmActionModalOpened"
-					class="text-left"
-					:working="working"
-					:selected-resources="selectedResources"
-					:resource-name="resourceName"
-					:action="selectedAction"
-					:errors="errors"
-					@confirm="executeAction"
-					@close="confirmActionModalOpened = false"
-				/>
-			</portal>
+			<component
+				:is="selectedAction?.component"
+				v-if="confirmActionModalOpened"
+				id="confirm-action-modal"
+				class="text-left"
+				:working="working"
+				:selected-resources="selectedResources"
+				:resource-name="resourceName"
+				:action="selectedAction"
+				:errors="errors"
+				:show="confirmActionModalOpened"
+				@confirm="executeAction"
+				@close="closeConfirmationModal"
+			/>
 		</template>
-	</panel-item>
+	</PanelItem>
 </template>
 
 <script>
@@ -43,9 +40,10 @@ export default {
 	mixins: [FormField, HandlesValidationErrors],
 
 	props: {
-		resource: String,
+		index: Number,
+		resource: Object,
 		resourceName: String,
-		resourceId: Number,
+		resourceId: String,
 		field: Object,
 		queryString: {
 			type: Object,

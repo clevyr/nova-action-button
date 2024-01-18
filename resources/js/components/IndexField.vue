@@ -1,7 +1,6 @@
 <template>
 	<div>
-		<button
-			class="flex-shrink-0 h-9 px-4 focus:outline-none ring-primary-200 dark:ring-gray-600 focus:ring text-white dark:text-gray-800 inline-flex shadow rounded ring-primary-200 bg-primary-500 hover:bg-primary-400 active:bg-primary-600 items-center text-sm ring-primary-200 font-bold"
+		<DefaultButton
 			:class="{ hidden: hidden }"
 			:disabled="disabled"
 			:style="`background-color: ${buttonColor} !important`"
@@ -16,7 +15,7 @@
 				:is="svg"
 				v-if="svg"
 			/>
-		</button>
+		</DefaultButton>
 
 		<!-- Action Confirmation Modal -->
 		<component
@@ -38,7 +37,6 @@
 
 <script>
 import {
-	Errors,
 	FormField,
 	HandlesValidationErrors,
 } from 'laravel-nova';

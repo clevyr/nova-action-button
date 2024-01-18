@@ -1,7 +1,9 @@
 <template>
-	<default-field
+	<DefaultField
 		:field="field"
 		:errors="errors"
+		:show-help-text="showHelpText"
+		:full-width-content="fullWidthContent"
 	>
 		<template #field>
 			<input
@@ -13,7 +15,7 @@
 				:placeholder="field.name"
 			>
 		</template>
-	</default-field>
+	</DefaultField>
 </template>
 
 <script>
