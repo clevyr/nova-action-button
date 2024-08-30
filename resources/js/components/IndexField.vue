@@ -179,13 +179,13 @@ export default {
 		 * Gather the action FormData for the given action.
 		 */
 		actionFormData() {
-			return _.tap(new FormData(), (formData) => {
-				formData.append('resources', this.selectedResources);
-
-				_.each(this.selectedAction.fields, (field) => {
-					field.fill(formData);
-				});
+			const formData = new FormData();
+			formData.append('resources', this.selectedResources);
+			(this.selectedAction.fields || []).forEach((field) => {
+				field.fill(formData);
 			});
+
+			return formData;
 		},
 
 		/**
