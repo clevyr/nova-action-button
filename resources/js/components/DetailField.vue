@@ -34,14 +34,14 @@
 </template>
 
 <script>
-import { Errors, FormField, HandlesValidationErrors } from 'laravel-nova';
+import { FormField, Errors } from 'laravel-nova';
 import { Button as DefaultButton } from "laravel-nova-ui";
 
 export default {
 	components:{
 		DefaultButton,
 	},
-	mixins: [FormField, HandlesValidationErrors],
+	mixins: [FormField],
 
 	props: {
 		resourceName: String,
@@ -63,6 +63,7 @@ export default {
 	data: () => ({
 		working: false,
 		confirmActionModalOpened: false,
+		errors: new Errors(),
 	}),
 
 	computed: {
@@ -111,7 +112,7 @@ export default {
          */
 		closeConfirmationModal() {
 			this.confirmActionModalOpened = false;
-			this.errors = new Errors();
+			this.errors.clear();
 		},
 
 		/**
@@ -140,7 +141,7 @@ export default {
 					this.working = false;
 
 					if (error.response.status == 422) {
-						this.errors = new Errors(error.response.data.errors);
+						this.errors.record(error.response.data.errors);
 						Nova.error(this.__('There was a problem executing the action.'));
 					}
 				});
