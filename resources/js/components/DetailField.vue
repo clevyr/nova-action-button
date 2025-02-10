@@ -143,6 +143,10 @@ export default {
 					if (error.response.status == 422) {
 						this.errors.record(error.response.data.errors);
 						Nova.error(this.__('There was a problem executing the action.'));
+						this.$nextTick(() => {
+							// Scroll to the first error message, if it exists.
+							document.querySelector('.help-text-error')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+						});
 					}
 				});
 		},
