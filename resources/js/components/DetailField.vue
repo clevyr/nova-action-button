@@ -35,8 +35,12 @@
 
 <script>
 import { Errors, FormField, HandlesValidationErrors } from 'laravel-nova';
+import { Button as DefaultButton } from "laravel-nova-ui";
 
 export default {
+	components:{
+		DefaultButton,
+	},
 	mixins: [FormField, HandlesValidationErrors],
 
 	props: {

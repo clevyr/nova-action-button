@@ -40,11 +40,13 @@ import {
 	FormField,
 	HandlesValidationErrors,
 } from 'laravel-nova';
+import { Button as DefaultButton } from "laravel-nova-ui";
 
 import Loading from './Loading';
 
 export default {
 	components: {
+		DefaultButton,
 		Loading,
 	},
 	mixins: [
