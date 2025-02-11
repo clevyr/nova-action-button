@@ -1,6 +1,14 @@
 # Changelog
 
-## v1.0.0 - 2023-25-10
+## v2.0.0 - 2025-02-10
+
+### Breaking Changes
+- Updated to Nova 5
+
+### Features
+- Scrolls to the first validation error in an action modal following a failed submission.
+
+## v1.0.0 - 2023-10-25
 
 ### Breaking Changes
 - Updated to Nova 4

@@ -14,6 +14,9 @@ class NovaExtension {
 	webpackConfig(webpackConfig) {
 		webpackConfig.externals = {
 			vue: 'Vue',
+
+			// Exposed by the /vendor/nova/ui.js script Nova loads
+			"laravel-nova-ui": "LaravelNovaUi",
 		};
 
 		webpackConfig.resolve.alias = {

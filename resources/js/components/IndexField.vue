@@ -36,20 +36,18 @@
 </template>
 
 <script>
-import {
-	FormField,
-	HandlesValidationErrors,
-} from 'laravel-nova';
+import { FormField, Errors } from 'laravel-nova';
+import { Button as DefaultButton } from "laravel-nova-ui";
 
 import Loading from './Loading';
 
 export default {
 	components: {
+		DefaultButton,
 		Loading,
 	},
 	mixins: [
 		FormField,
-		HandlesValidationErrors,
 	],
 	props: {
 		resourceName: String,
@@ -69,6 +67,7 @@ export default {
 	},
 
 	data: () => ({
+		errors: new Errors(),
 		working: false,
 		loading: false,
 		confirmActionModalOpened: false,
@@ -169,8 +168,12 @@ export default {
 					this.loading = false;
 
 					if (error.response.status === 422) {
-						this.errors.add(error.response.data.errors);
+						this.errors.record(error.response.data.errors);
 						Nova.error(this.__('There was a problem executing the action.'));
+						this.$nextTick(() => {
+							// Scroll to the first error message, if it exists.
+							document.querySelector('.help-text-error')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+						});
 					}
 				});
 		},
