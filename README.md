@@ -1,13 +1,10 @@
 # Nova Action Button
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/pdmfc/nova-action-button?style=flat-square)](https://packagist.org/packages/pdmfc/nova-action-button)
-![Licence](https://img.shields.io/github/license/pdmfc/nova-action-button?style=flat-square)
-[![Total Downloads](https://poser.pugx.org/pdmfc/nova-action-button/downloads?format=flat-square)](https://packagist.org/packages/pdmfc/nova-action-button)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/clevyr/nova-action-button?style=flat-square)](https://packagist.org/packages/clevyr/nova-action-button)
+![License](https://img.shields.io/github/license/clevyr/nova-action-button?style=flat-square)
+[![Total Downloads](https://poser.pugx.org/clevyr/nova-action-button/downloads?format=flat-square)](https://packagist.org/packages/clevyr/nova-action-button)
 
 This package allows you to execute an action directly on your resource table view.
-
-### Forked From
-https://github.com/pdmfc/nova-action-button
 
 ## Installation
 
@@ -83,33 +80,6 @@ To change button color, use `buttonColor('#21b970')` method.
 ## Caveats
 
 - Currently, in order to use this field, you still have to declare the action in your resource `actions()` method.
-
-## How to contribute
-
-- clone the repo
-- on `composer.json` of a laravel nova application add the following:
-
-```
-{
-    //...
-
-    "require" {
-        "clevyr/nova-action-button: "*"
-    },
-
-    //...
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../path_to_your_package_folder"
-        }
-    ],
-}
-```
-
-- run `composer update clevyr/nova-action-button`
-
-You're now ready to start contributing!
 
 ## Changelog
 
