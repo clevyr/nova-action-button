@@ -1,5 +1,10 @@
 # Changelog
 
+## v2.0.1 - 2025-02-18
+
+### Bug fixes
+- Fixed handling of Nova action responses for redirect and visit.
+
 ## v2.0.0 - 2025-02-10
 
 ### Breaking Changes
