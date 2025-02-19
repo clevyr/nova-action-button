@@ -208,17 +208,20 @@ export default {
 				Nova.error(data.danger);
 			} else if (data.download) {
 				const link = document.createElement('a');
-				link.href = data.download;
-				link.download = data.name;
+				link.href = data.download.url;
+				link.download = data.download.name;
 				document.body.appendChild(link);
 				link.click();
 				document.body.removeChild(link);
+			} else if (data.redirect && data.redirect.openInNewTab) {
+				window.open(data.redirect.url, '_blank');
 			} else if (data.redirect) {
-				window.location = data.redirect;
-			} else if (data.push) {
-				this.$router.push(data.push);
-			} else if (data.openInNewTab) {
-				window.open(data.openInNewTab, '_blank');
+				window.location = data.redirect.url;
+			} else if (data.visit) {
+				Nova.visit({
+					url: Nova.url(data.visit.path, data.visit.options),
+					remote: false,
+				});
 			} else {
 				this.$parent.$emit('actionExecuted');
 				Nova.$emit('action-executed');

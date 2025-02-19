@@ -1,5 +1,4 @@
 const mix = require('laravel-mix');
-const webpack = require('webpack');
 const path = require('path');
 
 class NovaExtension {
@@ -23,7 +22,7 @@ class NovaExtension {
 			...(webpackConfig.resolve.alias || {}),
 			'laravel-nova': path.join(
 				__dirname,
-				'../../../vendor/laravel/nova/resources/js/mixins/packages.js',
+				'vendor/laravel/nova/resources/js/mixins/packages.js',
 			)
 		};
 
