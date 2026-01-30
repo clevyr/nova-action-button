@@ -1,5 +1,10 @@
 # Changelog
 
+## v2.0.2 - 2026-01-30
+
+### Bug fixes
+- Now supports withoutConfirmation action setting.
+
 ## v2.0.1 - 2025-02-18
 
 ### Bug fixes

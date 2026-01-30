@@ -126,8 +126,12 @@ export default {
 		 * Confirm with the user that they actually want to run the selected action.
 		 */
 		openConfirmationModal() {
-			this.loading = true;
-			this.confirmActionModalOpened = true;
+			if (this.selectedAction.withoutConfirmation) {
+				this.executeAction();
+			} else {
+				this.loading = true;
+				this.confirmActionModalOpened = true;
+			}
 		},
 
 		/**
